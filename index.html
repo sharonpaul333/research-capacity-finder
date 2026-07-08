@@ -462,11 +462,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
     runtime.markFetched(rootName);
     runtime.setRootName(rootName);
     runtime.adoptParsed(rootName, parsed);
-    fetch(location.href).then((res) => res.ok ? res.text() : "").then((t) => {
-      const raw = t ? parseDcText(t) : null;
-      if (raw?.template) runtime.updateHtml(rootName, raw.template);
-    }).catch(() => {
-    });
+    /* self-contained: no re-fetch */ void 0;
     const dc = doc.querySelector("x-dc");
     const hostEl = doc.createElement("div");
     hostEl.id = "dc-root";
@@ -1670,6 +1666,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       const r = registry.get(name);
       if (r.fetched) return;
       r.fetched = true;
+      return; /* self-contained: no sibling .dc.html files to fetch */
       const url = COMPONENT_DIR + "/" + encodeURIComponent(name) + ".dc.html";
       fetch(url).then((res) => {
         if (!res.ok) {
