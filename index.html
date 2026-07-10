@@ -2316,6 +2316,14 @@ html,body{margin:0}
                   <div style="font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted,#6E6A62);margin-top:13px;line-height:1.5">{{ card.meta }}</div>
                   <sc-if value="{{ card.hasUrl }}"><a href="{{ card.url }}" target="_blank" rel="noopener" style="margin-top:16px;font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ card.linkLabel }} →</a></sc-if>
                   <sc-if value="{{ card.noUrl }}"><span style="margin-top:16px;font-size:13px;color:var(--muted,#6E6A62);font-style:italic">Link to follow</span></sc-if>
+                  <sc-if value="{{ card.hasRegLinks }}">
+                    <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--line,#E4DFD4);display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region</span>
+                      <sc-for list="{{ card.regLinks }}" as="rl" hint-placeholder-count="1">
+                        <a href="{{ rl.url }}" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ rl.label }} →</a>
+                      </sc-for>
+                    </div>
+                  </sc-if>
                 </div>
               </sc-for>
             </div>
@@ -2476,6 +2484,14 @@ html,body{margin:0}
                   <div style="font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted,#6E6A62);margin-top:13px;line-height:1.5">{{ card.meta }}</div>
                   <sc-if value="{{ card.hasUrl }}"><a href="{{ card.url }}" target="_blank" rel="noopener" style="margin-top:16px;font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ card.linkLabel }} →</a></sc-if>
                   <sc-if value="{{ card.noUrl }}"><span style="margin-top:16px;font-size:13px;color:var(--muted,#6E6A62);font-style:italic">Link to follow</span></sc-if>
+                  <sc-if value="{{ card.hasRegLinks }}">
+                    <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--line,#E4DFD4);display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region</span>
+                      <sc-for list="{{ card.regLinks }}" as="rl" hint-placeholder-count="1">
+                        <a href="{{ rl.url }}" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ rl.label }} →</a>
+                      </sc-for>
+                    </div>
+                  </sc-if>
                 </div>
               </sc-for>
             </div>
@@ -2499,6 +2515,14 @@ html,body{margin:0}
                   <div style="font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted,#6E6A62);margin-top:13px;line-height:1.5">{{ card.meta }}</div>
                     <sc-if value="{{ card.hasUrl }}"><a href="{{ card.url }}" target="_blank" rel="noopener" style="margin-top:16px;font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ card.linkLabel }} →</a></sc-if>
                     <sc-if value="{{ card.noUrl }}"><span style="margin-top:16px;font-size:13px;color:var(--muted,#6E6A62);font-style:italic">Link to follow</span></sc-if>
+                  <sc-if value="{{ card.hasRegLinks }}">
+                    <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--line,#E4DFD4);display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region</span>
+                      <sc-for list="{{ card.regLinks }}" as="rl" hint-placeholder-count="1">
+                        <a href="{{ rl.url }}" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ rl.label }} →</a>
+                      </sc-for>
+                    </div>
+                  </sc-if>
                   </div>
                 </sc-for>
               </div>
@@ -2537,6 +2561,14 @@ html,body{margin:0}
                   <div style="font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted,#6E6A62);margin-top:13px;line-height:1.5">{{ card.meta }}</div>
                       <sc-if value="{{ card.hasUrl }}"><a href="{{ card.url }}" target="_blank" rel="noopener" style="margin-top:16px;font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ card.linkLabel }} →</a></sc-if>
                       <sc-if value="{{ card.noUrl }}"><span style="margin-top:16px;font-size:13px;color:var(--muted,#6E6A62);font-style:italic">Link to follow</span></sc-if>
+                  <sc-if value="{{ card.hasRegLinks }}">
+                    <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--line,#E4DFD4);display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region</span>
+                      <sc-for list="{{ card.regLinks }}" as="rl" hint-placeholder-count="1">
+                        <a href="{{ rl.url }}" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ rl.label }} →</a>
+                      </sc-for>
+                    </div>
+                  </sc-if>
                     </div>
                   </sc-for>
                 </div>
@@ -2603,17 +2635,20 @@ class Component extends DCLogic {
 
     this.REGIONS = ['North East','North West','Yorkshire and the Humber','East Midlands','West Midlands','East of England','London','South East','South West'];
 
+    this.HCP_REG = {'North East':['https://newcastlehealthresearchpartnership.org/newcastle-health-research-partnership-academy/nihr-north-east-and-north-cumbria-health-and-care-professions-internship-programme/'],'Yorkshire and the Humber':['https://www.yhresearchcommunity.nhs.uk/'],'North West':['https://research.northwest.nhs.uk/our-work/nihr-health-care-professional-hcp-internship-programme-2026-2027/'],'East Midlands':['https://www.nuh.nhs.uk/nihr-health-and-care-professional-internship-programme/'],'West Midlands':['https://www.mpft.nhs.uk/NIHRInternships'],'East of England':['https://www.jpaget.nhs.uk/education-research/research-and-development/east-of-england-nihr-health-and-care-professional-internship-programme/'],'South East':['https://arc-kss.nihr.ac.uk/learning-and-development/nihr-health-care-professional-internship-programme'],'London':['https://www.jrmo.org.uk/news-and-training/nlrise/','https://www.kcl.ac.uk/news/new-programme-for-south-london-health-and-care-professionals-welcomes-first-interns'],'South West':['https://insight-southwestcentral.net/nihr-hcp-internship/','https://www.plymouth.ac.uk/study/cpd/nihr-internships-in-the-south-west-peninsula-for-health-and-care-professionals']};
+    this.INSIGHT_REG = {'North East':['https://newcastlehealthresearchpartnership.org/newcastle-health-research-partnership-academy/nihr-insight-north-east-north-cumbria-research-masters/'],'Yorkshire and the Humber':['https://yh.insight.leeds.ac.uk/'],'North West':['https://arc-nwc.nihr.ac.uk/insight/'],'East Midlands':['https://www.nottingham.ac.uk/pgstudy/funding/nihr-scholarship'],'West Midlands':['https://www.arc-wm.nihr.ac.uk/insight-west-midlands/'],'East of England':['https://www.essex.ac.uk/departments/health-and-social-care/masters/nihr-insight'],'South East':['https://blogs.brighton.ac.uk/nihrinsight/'],'London':['https://www.kcl.ac.uk/research/insight-programme-south-london'],'South West':['https://insight-southwestcentral.net/']};
+
     this.regionMap = {
       'East of England':'East of England','East Midlands':'East Midlands',
       'Greater Manchester':'North West','Kent, Surrey and Sussex':'South East',
       'North East and North Cumbria':'North East','North West Coast':'North West',
-      'South West':'South West','Thames Valley':'South East','Wessex':'South East',
+      'South West':'South West','Thames Valley':'South East','Wessex':'South West',
       'Yorkshire and Humber':'Yorkshire and the Humber','Multiple':'West Midlands'
     };
 
     this.P = [
       {n:'Social care nurse research champions',org:'NIHR',st:'first',sc:'national',el:['nurse'],url:'https://www.nihr.ac.uk/career-development/researcher-development-programme-social-care-nurses'},
-      {n:'Stepping into research',org:'HCP Internship Programme',st:'first',sc:'national',el:['prof'],natReg:true,url:'https://www.nihr.ac.uk/health-and-care-professional-internship-programme'},
+      {n:'Stepping into research',org:'HCP Internship Programme',st:'first',sc:'national',el:['prof'],natReg:true,regKey:'hcp',url:'https://www.nihr.ac.uk/health-and-care-professional-internship-programme'},
       {n:'Career development awards',org:'NIHR School for Social Care Research',st:'first',sc:'national',el:['adult'],url:'https://sscr.nihr.ac.uk/career-development/social-care-research-career-opportunities/career-development-awards-round-three/'},
       {n:'Research trainees',org:'NIHR School for Social Care Research',st:'first',sc:'national',el:['adult'],url:'https://sscr.nihr.ac.uk/career-development/social-care-research-career-opportunities/'},
       {n:'Internships',org:'NIHR School for Social Care Research',st:'first',sc:'national',el:['adult'],url:'https://sscr.nihr.ac.uk/career-development/social-care-research-career-opportunities/'},
@@ -2626,7 +2661,7 @@ class Component extends DCLogic {
       {n:'Coventry training',org:'Health Determinant Research Collaborations',st:'first',sc:'regional',el:[],reg:'Multiple',url:'https://www.coventry.gov.uk/healthdeterminantsresearchcollaboration/training'},
       {n:'Cumberland training',org:'Health Determinant Research Collaborations',st:'first',sc:'regional',el:[],reg:'North West Coast',url:'https://www.cumberland.gov.uk/health-and-social-care/health-and-wellbeing/cumberland-health-determinants-research-collaboration-hdrc'},
       {n:'Social care nurse research internships',org:'NIHR',st:'building',sc:'national',el:['nurse'],url:'https://www.nihr.ac.uk/career-development/researcher-development-programme-social-care-nurses'},
-      {n:'Growing in research',org:'HCP Internship Programme',st:'building',sc:'national',el:['prof'],natReg:true,url:'https://www.nihr.ac.uk/health-and-care-professional-internship-programme'},
+      {n:'Growing in research',org:'HCP Internship Programme',st:'building',sc:'national',el:['prof'],natReg:true,regKey:'hcp',url:'https://www.nihr.ac.uk/health-and-care-professional-internship-programme'},
       {n:'Short Placement Award for Research Collaboration (SPARC)',org:'NIHR Academy',st:'building',sc:'national',el:['nihr'],url:'https://www.nihr.ac.uk/career-development/research-career-funding-programmes/supporting-career-development/sparc-short-placement-award-research-collaboration'},
       {n:'LA Short Placement Award for Research Collaboration (LA SPARC)',org:'NIHR Academy',st:'building',sc:'national',el:['nihr'],url:'https://www.nihr.ac.uk/career-development/research-career-funding-programmes/supporting-career-development/local-authority-short-placement-award-research-collaboration-la-sparc'},
       {n:'Pre-application support fund for NIHR Predoctoral',org:'NIHR Academy',st:'building',sc:'national',el:[],url:'https://www.nihr.ac.uk/career-development/research-career-funding-programmes/supporting-career-development/pre-application-support-fund'},
@@ -2635,11 +2670,11 @@ class Component extends DCLogic {
       {n:'SWET research scholarships',org:'Social Workers Educational Trust',st:'building',sc:'national',el:['prof'],url:'https://socialworkerseducationaltrust.org.uk/swet-research-scholarship/'},
       {n:'Research Fellowship',org:'NIHR ARC East of England',st:'building',sc:'regional',el:[],reg:'East of England',url:'https://arc-eoe.nihr.ac.uk/research-fellowship'},
       {n:'Impact Fellowship',org:'NIHR ARC East of England',st:'building',sc:'regional',el:[],reg:'East of England',url:'https://arc-eoe.nihr.ac.uk/impact-fellowship'},
-      {n:'Developing Research Careers Group',org:'NIHR ARC Kent, Surrey and Sussex',st:'building',sc:'regional',el:[],reg:'Kent, Surrey and Sussex',url:'https://arc-kss.nihr.ac.uk/'},
-      {n:'Mentorship programme',org:'NIHR ARC Kent, Surrey and Sussex',st:'building',sc:'regional',el:[],reg:'Kent, Surrey and Sussex',url:'https://arc-kss.nihr.ac.uk/'},
-      {n:'Research week',org:'NIHR ARC Kent, Surrey and Sussex',st:'building',sc:'regional',el:[],reg:'Kent, Surrey and Sussex',url:'https://arc-kss.nihr.ac.uk/'},
+      {n:'Developing Research Careers Group',org:'NIHR ARC Kent, Surrey and Sussex',st:'building',sc:'regional',el:[],reg:'Kent, Surrey and Sussex',url:'https://arc-kss.nihr.ac.uk/learning-and-development/research-communities-of-practice'},
+      {n:'Mentorship programme',org:'NIHR ARC Kent, Surrey and Sussex',st:'building',sc:'regional',el:[],reg:'Kent, Surrey and Sussex',url:'https://arc-kss.nihr.ac.uk/learning-and-development/mentorship'},
+      {n:'Research week',org:'NIHR ARC Kent, Surrey and Sussex',st:'building',sc:'regional',el:[],reg:'Kent, Surrey and Sussex',url:'https://arc-kss.nihr.ac.uk/events/105'},
       {n:'Applied Research Fellowships',org:'NIHR ARC North East and North Cumbria',st:'building',sc:'regional',el:[],reg:'North East and North Cumbria',url:'https://arc-nenc.nihr.ac.uk/news/join-our-team-applied-research-fellowships/'},
-      {n:'Internships, (i) Research project',org:'NIHR ARC North West Coast',st:'building',sc:'regional',el:[],reg:'North West Coast',url:'https://arc-nwc.nihr.ac.uk/opportunities/internships/research-internship-support/'},
+      {n:'Research Project Internships',org:'NIHR ARC North West Coast',st:'building',sc:'regional',el:[],reg:'North West Coast',url:'https://arc-nwc.nihr.ac.uk/opportunities/internships/research-internship-support/'},
       {n:'Innovation Internships',org:'NIHR ARC North West Coast',st:'building',sc:'regional',el:[],reg:'North West Coast',url:'https://arc-nwc.nihr.ac.uk/opportunities/internships/innovation-internships/'},
       {n:'Knowledge mobilisation internships',org:'NIHR ARC North West Coast',st:'building',sc:'regional',el:[],reg:'North West Coast',url:'https://arc-nwc.nihr.ac.uk/opportunities/internships/knowledge-mobilisation-internships/'},
       {n:'Predoctoral fellowship preparation internships',org:'NIHR ARC North West Coast',st:'building',sc:'regional',el:[],reg:'North West Coast',url:'https://arc-nwc.nihr.ac.uk/opportunities/internships/nihr-fellowship-internships/'},
@@ -2648,17 +2683,17 @@ class Component extends DCLogic {
       {n:'PPIE Advice Sessions',org:'NIHR ARC South West',st:'building',sc:'regional',el:[],reg:'South West',url:'https://arc-swp.nihr.ac.uk/training-type/ppi-sessions/'},
       {n:'Short training courses',org:'NIHR ARC Yorkshire and Humber',st:'building',sc:'regional',el:[],reg:'Yorkshire and Humber',url:'https://arc-yh.nihr.ac.uk/training/'},
       {n:'Internships, placements, & fellowships',org:'NIHR ARC Yorkshire and Humber',st:'building',sc:'regional',el:[],reg:'Yorkshire and Humber',url:'https://arc-yh.nihr.ac.uk/our-approach/academic-career-development/'},
-      {n:'INSIGHT programme, fully funded masters course',org:'NIHR',st:'formal',sc:'national',el:['prof'],natReg:true,url:'https://www.nihr.ac.uk/contacting-your-regional-insight-programme'},
-      {n:'Deliver leadership in research',org:'HCP Internship Programme',st:'formal',sc:'national',el:['prof'],natReg:true,url:'https://www.nihr.ac.uk/health-and-care-professional-internship-programme'},
+      {n:'INSIGHT programme, fully funded masters course',org:'NIHR',st:'formal',sc:'national',el:['prof'],natReg:true,regKey:'insight',url:'https://www.nihr.ac.uk/career-development/research-career-funding-programmes/supporting-career-development/insight-programme'},
+      {n:'Deliver leadership in research',org:'HCP Internship Programme',st:'formal',sc:'national',el:['prof'],natReg:true,regKey:'hcp',url:'https://www.nihr.ac.uk/health-and-care-professional-internship-programme'},
       {n:'Pre-application support fund for NIHR Doctoral award',org:'NIHR Academy',st:'formal',sc:'national',el:[],url:'https://www.nihr.ac.uk/career-development/research-career-funding-programmes/supporting-career-development/pre-application-support-fund'},
       {n:'Predoctoral award',org:'NIHR Academy',st:'formal',sc:'national',el:[],url:'https://www.nihr.ac.uk/career-development/research-career-funding-programmes/predoctoral/predoctoral-award'},
       {n:'Predoctoral fellowships',org:'NIHR ARC Greater Manchester',st:'formal',sc:'regional',el:[],reg:'Greater Manchester',url:'https://arc-gm.nihr.ac.uk/pre-doctoral-fellowship'},
       {n:'Health Services Modelling Associates Programme (HSMA)',org:'NIHR ARC South West',st:'formal',sc:'regional',el:[],reg:'South West',url:'https://arc-swp.nihr.ac.uk/training-type/health-service-modelling-associates-programme-hsma/'},
       {n:'Pre-Doctoral Research Support Programme',org:'NHS R&D North West',st:'formal',sc:'regional',el:[],reg:'North West',url:'https://research.northwest.nhs.uk/our-work/doctoral-research-support-programme/'},
-      {n:'Researcher Development Programme (LHP RDP)',org:'Liverpool Health Partners',st:'formal',sc:'regional',el:['lhp'],reg:'North West',url:'https://research.northwest.nhs.uk/our-work/liverpool-health-partners-researcher-development-programme-lhp-rdp/'},
+      {n:'Researcher Development Programme (LHP RDP)',org:'NHS R&D North West',st:'formal',sc:'regional',el:['lhp'],reg:'North West',url:'https://research.northwest.nhs.uk/our-work/liverpool-health-partners-researcher-development-programme-lhp-rdp/'},
       {n:'Doctoral fellowship preparation internships',org:'NIHR ARC North West Coast',st:'formal',sc:'regional',el:[],reg:'North West Coast',url:'https://arc-nwc.nihr.ac.uk/opportunities/internships/nihr-fellowship-internships/'},
       {n:'Research Inclusion Internships',org:'NIHR ARC Wessex',st:'formal',sc:'regional',el:[],reg:'Wessex',url:'https://arc-wx.nihr.ac.uk/'},
-      {n:'Practitioner academic leading research',org:'HCP Internship Programme',st:'phd',sc:'national',el:['prof'],natReg:true,url:'https://www.nihr.ac.uk/health-and-care-professional-internship-programme'},
+      {n:'Practitioner academic leading research',org:'HCP Internship Programme',st:'phd',sc:'national',el:['prof'],natReg:true,regKey:'hcp',url:'https://www.nihr.ac.uk/health-and-care-professional-internship-programme'},
       {n:'Pre-application support fund for NIHR Postdoctoral',org:'NIHR Academy',st:'phd',sc:'national',el:[],url:'https://www.nihr.ac.uk/career-development/research-career-funding-programmes/supporting-career-development/pre-application-support-fund'},
       {n:'Doctoral award',org:'NIHR Academy',st:'phd',sc:'national',el:[],url:'https://www.nihr.ac.uk/career-development/research-career-funding-programmes/doctoral-award'},
       {n:'Postdoctoral award',org:'NIHR Academy',st:'phd',sc:'national',el:[],url:'https://www.nihr.ac.uk/career-development/research-career-funding-programmes/postdoctoral/postdoctoral-award'},
@@ -2697,23 +2732,23 @@ class Component extends DCLogic {
     // normalise: english region + strip dashes from names
     // audience (adult / children's / both social care), keyed by org + name. From source spreadsheet.
     this.audMap = {
-      'NIHR|Social care nurse research champions':'Adult','HCP Internship Programme|Stepping into research':'Both',
+      'NIHR|Social care nurse research champions':'Both','HCP Internship Programme|Stepping into research':'Both',
       'NIHR School for Social Care Research|Career development awards':'Adult','NIHR School for Social Care Research|Research trainees':'Adult',
       'NIHR School for Social Care Research|Internships':'Adult','NIHR ARC Greater Manchester|Research internship programme':'Adult',
       'NIHR ARC East of England|ASCENT programme, seed funding':'Both',
       'Health Determinant Research Collaborations|Bradford training':'Both','Health Determinant Research Collaborations|Cornwall training':'Both',
       'Health Determinant Research Collaborations|Coventry training':'Both','Health Determinant Research Collaborations|Cumberland training':'Both',
-      'NIHR|Social care nurse research internships':'Adult',
+      'NIHR|Social care nurse research internships':'Both',
       'HCP Internship Programme|Growing in research':'Both','NIHR Academy|Short Placement Award for Research Collaboration (SPARC)':'Both',
       'NIHR Academy|LA Short Placement Award for Research Collaboration (LA SPARC)':'Both','NIHR Academy|Pre-application support fund for NIHR Predoctoral':'Both',
-      'Social Workers Educational Trust|Anne Cummins Memorial Scholarship':'Adult','Social Workers Educational Trust|SWET research scholarships':'Both',
+      'Social Workers Educational Trust|Anne Cummins Memorial Scholarship':'Both','Social Workers Educational Trust|SWET research scholarships':'Both',
       'NIHR ARC East of England|Research Fellowship':'Both','NIHR ARC East of England|Impact Fellowship':'Both',
       'NIHR ARC North East and North Cumbria|Applied Research Fellowships':'Both',
-      'NIHR ARC North West Coast|Internships, (i) Research project':'Adult','NIHR ARC North West Coast|Innovation Internships':'Both',
+      'NIHR ARC North West Coast|Research Project Internships':'Both','NIHR ARC North West Coast|Innovation Internships':'Both',
       'NIHR ARC North West Coast|Knowledge mobilisation internships':'Both','NIHR ARC North West Coast|Predoctoral fellowship preparation internships':'Both',
       'NIHR|INSIGHT programme, fully funded masters course':'Both','HCP Internship Programme|Deliver leadership in research':'Both',
       'NIHR Academy|Pre-application support fund for NIHR Doctoral award':'Both','NIHR Academy|Predoctoral award':'Both',
-      'NHS R&D North West|Pre-Doctoral Research Support Programme':'Both','Liverpool Health Partners|Researcher Development Programme (LHP RDP)':'Both',
+      'NHS R&D North West|Pre-Doctoral Research Support Programme':'Both','NHS R&D North West|Researcher Development Programme (LHP RDP)':'Both',
       'NIHR ARC North West Coast|Doctoral fellowship preparation internships':'Both','HCP Internship Programme|Practitioner academic leading research':'Both',
       'NIHR Academy|Pre-application support fund for NIHR Postdoctoral':'Both','NIHR Academy|Doctoral award':'Both',
       'NIHR Academy|Postdoctoral award':'Both','NIHR Academy|Developing Research Leader Programme':'Both',
@@ -2729,7 +2764,13 @@ class Component extends DCLogic {
     this.deadlines = {
       'NIHR School for Social Care Research|Career development awards':{type:'closes',date:'24 Sep 2026'},
       'NIHR Academy|Short Placement Award for Research Collaboration (SPARC)':{type:'opens',date:'Late Sep 2026'},
-      'NIHR Academy|LA Short Placement Award for Research Collaboration (LA SPARC)':{type:'opens',date:'Late Sep 2026'}
+      'NIHR Academy|LA Short Placement Award for Research Collaboration (LA SPARC)':{type:'opens',date:'Late Sep 2026'},
+      'Social Workers Educational Trust|Anne Cummins Memorial Scholarship':{type:'closes',date:'Sep 2026'},
+      'Social Workers Educational Trust|SWET research scholarships':{type:'closes',date:'Sep 2026'},
+      'NIHR Academy|Developing Research Leader Programme':{type:'opens',date:'Early 2027'},
+      'NIHR Academy|Senior Research Leader Programme':{type:'opens',date:'Aug 2026'},
+      'NIHR Academy|Doctoral award':{type:'opens',date:'Oct 2026'},
+      'NIHR Academy|Postdoctoral award':{type:'closes',date:'12 Aug 2026'}
     };
 
     this.P.forEach(p=>{
@@ -2771,7 +2812,7 @@ class Component extends DCLogic {
   mark(p){ var m=''; if(p.el.indexOf('nihr')>-1)m+='*'; if(p.el.indexOf('prof')>-1)m+='**'; if(p.el.indexOf('nurse')>-1)m+='***'; if(p.el.indexOf('lhp')>-1)m+='****'; if(p.el.indexOf('adult')>-1)m+='*****'; return m; }
   groupByOrg(list){ var out=[], idx={}; list.forEach(p=>{ if(!(p.org in idx)){ idx[p.org]=out.length; out.push({org:p.org,items:[],seen:{}}); } var grp=out[idx[p.org]]; if(grp.seen[p.n]) return; grp.seen[p.n]=1; grp.items.push({name:p.n, mark:this.mark(p)}); }); return out.map((g,i)=>({key:i,org:g.org,items:g.items.map((it,j)=>({key:j,name:it.name,mark:it.mark}))})); }
 
-  card(p, col){
+  card(p, col, activeRegion){
     var tags=[];
     tags.push(p.sc==='national' ? 'National' : ('Regional  ·  '+p.engReg));
     if(p.el.indexOf('nurse')>-1) tags.push('Nurses only');
@@ -2781,10 +2822,24 @@ class Component extends DCLogic {
     if(p.el.indexOf('adult')>-1) tags.push('Adult Social Care only');
     var dl = p.dl || null;
     var audCol = p.aud==='Adult' ? '#0061A0' : (p.aud==='Children' ? '#8B3620' : '#0F6E56');
+
+    // Region-specific links for HCP / INSIGHT natReg entries
+    var regLinks = [];
+    if(p.regKey && activeRegion){
+      var mapp = p.regKey==='hcp' ? this.HCP_REG : (p.regKey==='insight' ? this.INSIGHT_REG : null);
+      if(mapp && mapp[activeRegion]){
+        var urls = mapp[activeRegion];
+        for(var i=0;i<urls.length;i++){
+          regLinks.push({ url:urls[i], label: urls.length>1 ? ('Regional link '+(i+1)) : 'Regional programme' });
+        }
+      }
+    }
+    var hasRegLinks = regLinks.length>0;
     return { key:p.org+'|'+p.n, name:p.n, org:p.org, det:p.det||'', hasDet:!!p.det,
       col:col, meta:tags.join('   ·   '), hasUrl:!!p.url, noUrl:!p.url, url:p.url||'#', linkLabel:'Learn more',
       hasAud:!!p.aud, audLabel: p.aud==='Both' ? 'Adult & children\u2019s' : (p.aud?p.aud+' social care':''), audCol:audCol, audBg: audCol+'1A',
       hasNatReg:!!p.natReg,
+      regLinks:regLinks, hasRegLinks:hasRegLinks,
       hasDl:!!dl,
       dlLabel: dl ? (dl.type==='closes'?'Closes':'Next round opens') : '',
       dlDate: dl ? dl.date : '',
@@ -3013,8 +3068,8 @@ class Component extends DCLogic {
           border: c.active ? 'var(--ink, #1B1B19)' : 'var(--line, #E4DFD4)',
           onClick:()=>setReg(c.value) }));
         var reg=this.getReg(focusStage,activeRegion);
-        v.nationalCards = this.getNat(focusStage).map(p=>this.card(p,d.col));
-        v.regionalCards = reg.map(p=>this.card(p,d.col));
+        v.nationalCards = this.getNat(focusStage).map(p=>this.card(p,d.col,activeRegion));
+        v.regionalCards = reg.map(p=>this.card(p,d.col,activeRegion));
         v.hasRegional = reg.length>0; v.regionalEmpty = reg.length===0;
         v.regionSubLabel = activeRegion ? activeRegion : 'all regions';
         v.resultsTotal = reg.length + this.getNat(focusStage).length;
@@ -3025,7 +3080,7 @@ class Component extends DCLogic {
         v.groups = this.STAGES.map(s=>{
           var d=this.disp(s);
           var nat=this.getNat(s.id), reg=this.getReg(s.id,activeRegion);
-          var cards=nat.map(p=>this.card(p,d.col)).concat(reg.map(p=>this.card(p,d.col)));
+          var cards=nat.map(p=>this.card(p,d.col,activeRegion)).concat(reg.map(p=>this.card(p,d.col,activeRegion)));
           total+=cards.length;
           return {key:s.id,label:s.label,col:d.col,bg:d.bg,count:cards.length,cards:cards};
         }).filter(g=>g.count>0);
@@ -3044,7 +3099,7 @@ class Component extends DCLogic {
           return true;
         });
         pool.sort((a,b)=> (a.sc==='national'?0:1)-(b.sc==='national'?0:1));
-        v.filterCards = pool.map(p=>this.card(p, this.disp(this.gS(p.st)).col));
+        v.filterCards = pool.map(p=>this.card(p, this.disp(this.gS(p.st)).col, activeRegion));
         v.filterCount = pool.length; v.filterEmpty = pool.length===0;
         v.single=false; v.allMode=false; v.showInfographic=false; v.showRail=false;
       }
