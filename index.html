@@ -2318,7 +2318,7 @@ html,body{margin:0}
                   <sc-if value="{{ card.noUrl }}"><span style="margin-top:16px;font-size:13px;color:var(--muted,#6E6A62);font-style:italic">Link to follow</span></sc-if>
                   <sc-if value="{{ card.hasRegLinks }}">
                     <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--line,#E4DFD4);display:flex;flex-direction:column;gap:7px">
-                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region</span>
+                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region<sc-if value="{{ card.hasRegLinkNote }}"> · {{ card.regLinkNote }}</sc-if></span>
                       <sc-for list="{{ card.regLinks }}" as="rl" hint-placeholder-count="1">
                         <a href="{{ rl.url }}" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ rl.label }} →</a>
                       </sc-for>
@@ -2486,7 +2486,7 @@ html,body{margin:0}
                   <sc-if value="{{ card.noUrl }}"><span style="margin-top:16px;font-size:13px;color:var(--muted,#6E6A62);font-style:italic">Link to follow</span></sc-if>
                   <sc-if value="{{ card.hasRegLinks }}">
                     <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--line,#E4DFD4);display:flex;flex-direction:column;gap:7px">
-                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region</span>
+                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region<sc-if value="{{ card.hasRegLinkNote }}"> · {{ card.regLinkNote }}</sc-if></span>
                       <sc-for list="{{ card.regLinks }}" as="rl" hint-placeholder-count="1">
                         <a href="{{ rl.url }}" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ rl.label }} →</a>
                       </sc-for>
@@ -2517,7 +2517,7 @@ html,body{margin:0}
                     <sc-if value="{{ card.noUrl }}"><span style="margin-top:16px;font-size:13px;color:var(--muted,#6E6A62);font-style:italic">Link to follow</span></sc-if>
                   <sc-if value="{{ card.hasRegLinks }}">
                     <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--line,#E4DFD4);display:flex;flex-direction:column;gap:7px">
-                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region</span>
+                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region<sc-if value="{{ card.hasRegLinkNote }}"> · {{ card.regLinkNote }}</sc-if></span>
                       <sc-for list="{{ card.regLinks }}" as="rl" hint-placeholder-count="1">
                         <a href="{{ rl.url }}" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ rl.label }} →</a>
                       </sc-for>
@@ -2563,7 +2563,7 @@ html,body{margin:0}
                       <sc-if value="{{ card.noUrl }}"><span style="margin-top:16px;font-size:13px;color:var(--muted,#6E6A62);font-style:italic">Link to follow</span></sc-if>
                   <sc-if value="{{ card.hasRegLinks }}">
                     <div style="margin-top:12px;padding-top:12px;border-top:1px dashed var(--line,#E4DFD4);display:flex;flex-direction:column;gap:7px">
-                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region</span>
+                      <span style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6E6A62)">Your region<sc-if value="{{ card.hasRegLinkNote }}"> · {{ card.regLinkNote }}</sc-if></span>
                       <sc-for list="{{ card.regLinks }}" as="rl" hint-placeholder-count="1">
                         <a href="{{ rl.url }}" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:{{ card.col }};text-decoration:none;align-self:flex-start;border-bottom:1.5px solid transparent" style-hover="border-bottom-color:{{ card.col }}">{{ rl.label }} →</a>
                       </sc-for>
@@ -2830,16 +2830,18 @@ class Component extends DCLogic {
       if(mapp && mapp[activeRegion]){
         var urls = mapp[activeRegion];
         for(var i=0;i<urls.length;i++){
-          regLinks.push({ url:urls[i], label: urls.length>1 ? ('Regional link '+(i+1)) : 'Regional programme' });
+          regLinks.push({ url:urls[i], label:'Regional programme' });
         }
       }
     }
     var hasRegLinks = regLinks.length>0;
+    var regLinkNote = regLinks.length>1 ? (regLinks.length+' programmes in your region') : '';
+    var hasRegLinkNote = regLinkNote.length>0;
     return { key:p.org+'|'+p.n, name:p.n, org:p.org, det:p.det||'', hasDet:!!p.det,
       col:col, meta:tags.join('   ·   '), hasUrl:!!p.url, noUrl:!p.url, url:p.url||'#', linkLabel:'Learn more',
       hasAud:!!p.aud, audLabel: p.aud==='Both' ? 'Adult & children\u2019s' : (p.aud?p.aud+' social care':''), audCol:audCol, audBg: audCol+'1A',
       hasNatReg:!!p.natReg,
-      regLinks:regLinks, hasRegLinks:hasRegLinks,
+      regLinks:regLinks, hasRegLinks:hasRegLinks, regLinkNote:regLinkNote, hasRegLinkNote:hasRegLinkNote,
       hasDl:!!dl,
       dlLabel: dl ? (dl.type==='closes'?'Closes':'Next round opens') : '',
       dlDate: dl ? dl.date : '',
