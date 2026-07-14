@@ -2823,18 +2823,10 @@ class Component extends DCLogic {
     var dl = p.dl || null;
     var audCol = p.aud==='Adult' ? '#0061A0' : (p.aud==='Children' ? '#8B3620' : '#0F6E56');
 
-    // Region-specific links for HCP / INSIGHT natReg entries
+    // Region-specific links now shown as separate cards under the Regional heading,
+    // so the national HCP/INSIGHT cards no longer carry an inline 'Your region' block.
     var regLinks = [];
-    if(p.regKey && activeRegion){
-      var mapp = p.regKey==='hcp' ? this.HCP_REG : (p.regKey==='insight' ? this.INSIGHT_REG : null);
-      if(mapp && mapp[activeRegion]){
-        var urls = mapp[activeRegion];
-        for(var i=0;i<urls.length;i++){
-          regLinks.push({ url:urls[i], label:'Regional programme' });
-        }
-      }
-    }
-    var hasRegLinks = regLinks.length>0;
+    var hasRegLinks = false;
     var regLinkNote = regLinks.length>1 ? (regLinks.length+' programmes in your region') : '';
     var hasRegLinkNote = regLinkNote.length>0;
     return { key:p.org+'|'+p.n, name:p.n, org:p.org, det:p.det||'', hasDet:!!p.det,
@@ -3072,7 +3064,35 @@ class Component extends DCLogic {
         var reg=this.getReg(focusStage,activeRegion);
         v.nationalCards = this.getNat(focusStage).map(p=>this.card(p,d.col,activeRegion));
         v.regionalCards = reg.map(p=>this.card(p,d.col,activeRegion));
-        v.hasRegional = reg.length>0; v.regionalEmpty = reg.length===0;
+        // Add regional HCP/INSIGHT entries under the Regional heading (when a region is selected)
+        var extraRegCards = [];
+        if(activeRegion){
+          var natRegEntries = this.getNat(focusStage).filter(p=>p.regKey);
+          natRegEntries.forEach(p=>{
+            var mapp = p.regKey==='hcp' ? this.HCP_REG : (p.regKey==='insight' ? this.INSIGHT_REG : null);
+            if(mapp && mapp[activeRegion]){
+              var urls = mapp[activeRegion];
+              var synth = {
+                n: (p.regKey==='insight' ? 'INSIGHT programme' : 'HCP Internship') + ' \u2013 ' + activeRegion,
+                org: p.org, st: p.st, sc:'regional', el: p.el||[], reg: activeRegion, engReg: activeRegion,
+                aud: p.aud, url: urls[0]
+              };
+              var c = this.card(synth, d.col, activeRegion);
+              // For a single URL: normal 'Learn more' link. For two (London/SW): use the regLinks list.
+              if(urls.length>1){
+                c.regLinks = urls.map(function(u){ return {url:u, label:'Regional programme'}; });
+                c.hasRegLinks = true; c.regLinkNote=''; c.hasRegLinkNote=false;
+                c.linkLabel = 'Regional programme';
+              } else {
+                c.regLinks = []; c.hasRegLinks = false;
+                c.url = urls[0]; c.hasUrl = true; c.noUrl = false; c.linkLabel = 'Regional programme';
+              }
+              extraRegCards.push(c);
+            }
+          });
+          if(extraRegCards.length){ v.regionalCards = extraRegCards.concat(v.regionalCards); }
+        }
+        v.hasRegional = (reg.length + extraRegCards.length) > 0; v.regionalEmpty = reg.length===0;
         v.regionSubLabel = activeRegion ? activeRegion : 'all regions';
         v.resultsTotal = reg.length + this.getNat(focusStage).length;
         if(inWizard){ v.secondaryActionLabel='Browse the full map'; v.onSecondaryAction=()=>self.setState({mode:'browse',bStage:null,bRegion:null}); }
