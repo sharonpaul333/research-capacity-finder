@@ -2638,6 +2638,19 @@ class Component extends DCLogic {
     this.HCP_REG = {'North East':['https://newcastlehealthresearchpartnership.org/newcastle-health-research-partnership-academy/nihr-north-east-and-north-cumbria-health-and-care-professions-internship-programme/'],'Yorkshire and the Humber':['https://www.yhresearchcommunity.nhs.uk/'],'North West':['https://research.northwest.nhs.uk/our-work/nihr-health-care-professional-hcp-internship-programme-2026-2027/'],'East Midlands':['https://www.nuh.nhs.uk/nihr-health-and-care-professional-internship-programme/'],'West Midlands':['https://www.mpft.nhs.uk/NIHRInternships'],'East of England':['https://www.jpaget.nhs.uk/education-research/research-and-development/east-of-england-nihr-health-and-care-professional-internship-programme/'],'South East':['https://arc-kss.nihr.ac.uk/learning-and-development/nihr-health-care-professional-internship-programme'],'London':['https://www.jrmo.org.uk/news-and-training/nlrise/','https://www.kcl.ac.uk/news/new-programme-for-south-london-health-and-care-professionals-welcomes-first-interns'],'South West':['https://insight-southwestcentral.net/nihr-hcp-internship/','https://www.plymouth.ac.uk/study/cpd/nihr-internships-in-the-south-west-peninsula-for-health-and-care-professionals']};
     this.INSIGHT_REG = {'North East':['https://newcastlehealthresearchpartnership.org/newcastle-health-research-partnership-academy/nihr-insight-north-east-north-cumbria-research-masters/'],'Yorkshire and the Humber':['https://yh.insight.leeds.ac.uk/'],'North West':['https://arc-nwc.nihr.ac.uk/insight/'],'East Midlands':['https://www.nottingham.ac.uk/pgstudy/funding/nihr-scholarship'],'West Midlands':['https://www.arc-wm.nihr.ac.uk/insight-west-midlands/'],'East of England':['https://www.essex.ac.uk/departments/health-and-social-care/masters/nihr-insight'],'South East':['https://blogs.brighton.ac.uk/nihrinsight/'],'London':['https://www.citystgeorges.ac.uk/prospective-students/finance/funding/insight-scholarships/_nocache','https://www.kcl.ac.uk/research/insight-programme-south-london'],'South West':['https://insight-southwestcentral.net/insightswcentral/','https://www.plymouth.ac.uk/research/nihr-insight-south-west-peninsula']};
 
+    // Descriptive labels for the split-region links (London N/S, South West Central/Peninsula)
+    this.REG_LINK_LABELS = {
+      'https://www.jrmo.org.uk/news-and-training/nlrise/':'North London',
+      'https://www.kcl.ac.uk/news/new-programme-for-south-london-health-and-care-professionals-welcomes-first-interns':'South London',
+      'https://www.citystgeorges.ac.uk/prospective-students/finance/funding/insight-scholarships/_nocache':'North London',
+      'https://www.kcl.ac.uk/research/insight-programme-south-london':'South London',
+      'https://insight-southwestcentral.net/nihr-hcp-internship/':'South West Central',
+      'https://www.plymouth.ac.uk/study/cpd/nihr-internships-in-the-south-west-peninsula-for-health-and-care-professionals':'South West Peninsula',
+      'https://insight-southwestcentral.net/insightswcentral/':'South West Central',
+      'https://www.plymouth.ac.uk/research/nihr-insight-south-west-peninsula':'South West Peninsula'
+    };
+    this.regLinkLabel = function(u){ return this.REG_LINK_LABELS[u] || 'Regional programme'; };
+
     this.regionMap = {
       'East of England':'East of England','East Midlands':'East Midlands',
       'Greater Manchester':'North West','Kent, Surrey and Sussex':'South East',
@@ -3081,14 +3094,14 @@ class Component extends DCLogic {
               // For a single URL: normal 'Learn more' link. For two (London/SW): use the regLinks list.
               if(urls.length>1){
                 // Two links (e.g. London, South West): show both via the regLinks list only.
-                c.regLinks = urls.map(function(u){ return {url:u, label:'Regional programme'}; });
+                c.regLinks = urls.map(function(u){ return {url:u, label:self.regLinkLabel(u)}; });
                 c.hasRegLinks = true;
                 c.regLinkNote = urls.length + ' programmes in your region'; c.hasRegLinkNote = true;
                 c.url = '#'; c.hasUrl = false; c.noUrl = false;  // suppress the single 'Learn more' to avoid duplication
               } else {
                 // Single link: show as the card's main link.
                 c.regLinks = []; c.hasRegLinks = false;
-                c.url = urls[0]; c.hasUrl = true; c.noUrl = false; c.linkLabel = 'Regional programme';
+                c.url = urls[0]; c.hasUrl = true; c.noUrl = false; c.linkLabel = self.regLinkLabel(urls[0]);
               }
               extraRegCards.push(c);
             }
